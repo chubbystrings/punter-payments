@@ -1,7 +1,6 @@
 /* eslint-disable quote-props */
 const admin = require('firebase-admin');
 
-// service account details
 const serviceAccount = {
   'type': process.env.SERVICE_TYPE,
   'project_id': process.env.SERVICE_PROJECT_ID,
