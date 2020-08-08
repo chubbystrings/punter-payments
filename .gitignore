@@ -1,0 +1,4 @@
+/config/dev.env
+serviceAccountKey.json
+/node_modules
+/logs

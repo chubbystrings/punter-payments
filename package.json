@@ -1,0 +1,36 @@
+{
+  "name": "punter_payments",
+  "version": "1.0.0",
+  "description": "backend for punter masters payment",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "start": "node server.js",
+    "dev": " env-cmd -f ./config/dev.env nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "punter-payments"
+  },
+  "author": "chubbystrings",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "firebase": "^7.17.2",
+    "firebase-admin": "^9.0.0",
+    "lodash": "^4.17.19",
+    "morgan": "^1.10.0",
+    "request": "^2.88.2",
+    "rotating-file-stream": "^2.1.3",
+    "simple-node-logger": "^18.12.24"
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0",
+    "eslint": "^7.6.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "nodemon": "^2.0.4"
+  }
+}
