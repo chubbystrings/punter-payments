@@ -4,7 +4,7 @@ const firestore = require('../../firebaseConfig');
 
 const { initializePayment, verifyPayment } = require('../config/paystack')(request);
 
-const baseUrl = process.env.APP_LOCAL_URL;
+const URL = process.env.APP_LOCAL_URL;
 
 exports.pay = async (req, res) => {
   const form = _.pick(req.body, ['amount', 'email', 'firstname', 'lastname', 'userId', 'phonenumber']);
@@ -38,7 +38,7 @@ exports.verify = async (req, res) => {
   verifyPayment(ref, async (error, body) => {
     if (error) {
       // handle errors appropriately
-      res.redirect(`${baseUrl}/receipt/${ref}/error`);
+      res.redirect(`${URL}/receipt/${ref}/error`);
       return res.status(500).send({
         status: 'error',
         error,
@@ -80,6 +80,6 @@ exports.verify = async (req, res) => {
       sub: currentSub + amount,
     });
 
-    return res.redirect(`${baseUrl}/receipt/${docId}/success`);
+    return res.redirect(`${URL}/receipt/${docId}/success`);
   });
 };

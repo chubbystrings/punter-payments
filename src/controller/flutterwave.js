@@ -4,7 +4,7 @@ const firestore = require('../../firebaseConfig');
 
 const { initializePayment, verifyPayment } = require('../config/flutterwave')(request);
 
-const baseUrl = process.env.APP_LOCAL_URL;
+const URL = process.env.APP_LOCAL_URL;
 const baseUrlSever = process.env.NODE_ENV === 'production' ? process.env.PROD_SERVER : process.env.LOCAL_SERVER;
 const link = process.env.LOGO;
 
@@ -51,14 +51,14 @@ exports.verify = async (req, res) => {
   const { status } = req.query;
   if (status === 'cancelled' || status === 'declined') {
     const errorRef = req.query.tx_ref;
-    res.redirect(`${baseUrl}/receipt/${errorRef}/error`);
+    res.redirect(`${URL}/receipt/${errorRef}/error`);
     return;
   }
   const ref = req.query.transaction_id;
   verifyPayment(ref, async (error, body) => {
     if (error) {
       // handle errors appropriately
-      res.redirect(`${baseUrl}/receipt/${ref}/error`);
+      res.redirect(`${URL}/receipt/${ref}/error`);
       return res.status(500).send({
         status: 'error',
         error,
@@ -107,6 +107,6 @@ exports.verify = async (req, res) => {
       sub: currentSub + (amountSettled * 100),
     });
 
-    return res.redirect(`${baseUrl}/receipt/${docId}/success`);
+    return res.redirect(`${URL}/receipt/${docId}/success`);
   });
 };
