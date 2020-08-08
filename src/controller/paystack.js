@@ -4,7 +4,7 @@ const firestore = require('../../firebaseConfig');
 
 const { initializePayment, verifyPayment } = require('../config/paystack')(request);
 
-const baseUrl = process.env.NODE_ENV === 'production' ? process.env.APP_PROD_URL : process.env.APP_LOCAL_URL;
+const baseUrl = process.env.APP_LOCAL_URL;
 
 exports.pay = async (req, res) => {
   const form = _.pick(req.body, ['amount', 'email', 'firstname', 'lastname', 'userId', 'phonenumber']);
