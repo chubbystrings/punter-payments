@@ -26,6 +26,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan('dev'));
 // setup the logger
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms', { stream: requestLogStream }));
+app.get('/', (req, res) => res.status(200).send({
+  message: 'punter payment server is live',
+}));
 app.use('/api/v1/auth', paymentRoutes);
 
 module.exports = app;

@@ -4,7 +4,8 @@ const firestore = require('../../firebaseConfig');
 
 const { initializePayment, verifyPayment } = require('../config/flutterwave')(request);
 
-const URL = process.env.APP_LOCAL_URL;
+const URL = process.env.NODE_ENV === 'production'
+  ? process.env.APP_PROD_URL : process.env.APP_LOCAL_URL;
 const baseUrlSever = process.env.NODE_ENV === 'production' ? process.env.PROD_SERVER : process.env.LOCAL_SERVER;
 const link = process.env.LOGO;
 

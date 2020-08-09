@@ -6,10 +6,6 @@ const Auth = require('../middlewares/auth');
 
 const router = express.Router();
 
-router.get('/', (req, res) => res.status(200).send({
-  message: 'punter payment server is live',
-}));
-
 router.post('/paystack/pay', Auth.verifyToken, paystackPaymentController.pay);
 router.get('/paystack/verify-payment', paystackPaymentController.verify);
 router.post('/flutterwave/pay', Auth.verifyToken, flutterPaymentController.pay);
